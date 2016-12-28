@@ -39,11 +39,23 @@ namespace BarcodeScanner
                     }
                 };
                 var scanner = new MobileBarcodeScanner();
+                scanner.AutoFocus();
                 var result = await scanner.Scan(opts);
 
                 _barcodeFormat.Text = result?.BarcodeFormat.ToString() ?? string.Empty;
                 _barcodeData.Text = result?.Text ?? string.Empty;
             };
+
+            // 连续扫描
+            //button.Click += (sender, args) =>
+            //{
+            //    var scanner = new MobileBarcodeScanner();
+            //    scanner.AutoFocus();
+            //    scanner.ScanContinuously(this, MobileBarcodeScanningOptions.Default, result =>
+            //    {
+            //        _barcodeData.Text = _barcodeData.Text + "\n" + result?.Text;
+            //    });
+            //};
         }
     }
 }
